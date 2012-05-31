@@ -18,6 +18,19 @@ Drupal.wysiwyg.editor.init.tinymce = function(settings) {
   tinyMCE.srcMode = (settings.global.execMode == 'src' ? '_src' : '');
   tinyMCE.gzipMode = (settings.global.execMode == 'gzip');
 
+  // Fix Drupal toolbar obscuring editor toolbar in fullscreen mode.
+  var $drupalToolbar = $('#toolbar', Drupal.overlayChild ? window.parent.document : document);
+  tinyMCE.onAddEditor.add(function (mgr, ed) {
+    if (ed.id == 'mce_fullscreen') {
+      $drupalToolbar.hide();
+    }
+  });
+  tinyMCE.onRemoveEditor.add(function (mgr, ed) {
+    if (ed.id == 'mce_fullscreen') {
+      $drupalToolbar.show();
+    }
+  });
+
   // Initialize editor configurations.
   for (var format in settings) {
     if (format == 'global') {
@@ -138,16 +151,18 @@ Drupal.wysiwyg.editor.instance.tinymce = {
 
         // Attach: Replace plain text with HTML representations.
         ed.onBeforeSetContent.add(function(ed, data) {
+          var editorId = (ed.id == 'mce_fullscreen' ? ed.getParam('fullscreen_editor_id') : ed.id);
           if (typeof Drupal.wysiwyg.plugins[plugin].attach == 'function') {
-            data.content = Drupal.wysiwyg.plugins[plugin].attach(data.content, pluginSettings, ed.id);
+            data.content = Drupal.wysiwyg.plugins[plugin].attach(data.content, pluginSettings, editorId);
             data.content = Drupal.wysiwyg.editor.instance.tinymce.prepareContent(data.content);
           }
         });
 
         // Detach: Replace HTML representations with plain text.
         ed.onGetContent.add(function(ed, data) {
+          var editorId = (ed.id == 'mce_fullscreen' ? ed.getParam('fullscreen_editor_id') : ed.id);
           if (typeof Drupal.wysiwyg.plugins[plugin].detach == 'function') {
-            data.content = Drupal.wysiwyg.plugins[plugin].detach(data.content, pluginSettings, ed.id);
+            data.content = Drupal.wysiwyg.plugins[plugin].detach(data.content, pluginSettings, editorId);
           }
         });
 
