@@ -83,3 +83,16 @@ function menu_attributes_update_7000(&$sandbox) {
   // If you do not want to display a completion message, simply return nothing.
   return t('All menu links with non-array value for class attribute have been fixed.');
 }
+
+/**
+ * Grant the 'administer menu attributes' permission to roles that currently
+ * have the 'administer menu' permission.
+ */
+function menu_attributes_update_7001() {
+  $roles = user_roles(FALSE, 'administer menu');
+  foreach ($roles as $rid => $role) {
+    user_role_grant_permissions($rid, array('administer menu attributes'));
+  }
+
+  return t("Every role with the 'administer menu' permission has also received the 'administer menu attributes' permission.");
+}

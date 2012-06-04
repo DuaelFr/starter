@@ -7,13 +7,25 @@
  */
 
 /**
+ * Implements hook_permission().
+ */
+function menu_attributes_permission() {
+  return array(
+    'administer menu attributes' => array(
+      'title' => t('Administer menu attributes'),
+      'description' => t('Administer menu attributes.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_menu_link_alter().
  */
 function menu_attributes_menu_link_alter(&$item, $menu) {
   if (isset($item['options']['attributes']) && is_array($item['options']['attributes'])) {
     // Filter out blank attributes.
     foreach ($item['options']['attributes'] as $key => $value) {
-      if (empty($value)) {
+      if ((is_array($value) && empty($value)) || is_string($value) && !drupal_strlen($value)) {
         unset($item['options']['attributes'][$key]);
       }
     }
@@ -128,7 +140,7 @@ function menu_attributes_form_menu_edit_item_alter(&$form, $form_state) {
  * @see _menu_attributes_form_alter()
  */
 function menu_attributes_form_node_form_alter(&$form, $form_state) {
-  if (isset($form['menu'])) {
+  if (isset($form['menu']['link'])) {
     $item = $form['#node']->menu;
     _menu_attributes_form_alter($form['menu']['link'], $item, $form);
     $form['menu']['link']['options']['attributes']['#type'] = 'container';
@@ -144,10 +156,15 @@ function menu_attributes_form_node_form_alter(&$form, $form_state) {
  *   The optional existing menu item for context.
  */
 function _menu_attributes_form_alter(array &$form, array $item = array(), array &$complete_form) {
-  $form['options'] = array(
-    '#tree' => TRUE,
-    '#weight'=> 50,
-  );
+  // Restrict access to the new form elements.
+  $form['options']['attributes']['#access'] = user_access('administer menu attributes');
+
+  $form['options']['#tree'] = TRUE;
+  $form['options']['#weight'] = 50;
+
+  // Unset the previous value so that the new values get saved.
+  unset($form['options']['#value']['attributes']);
+
   $form['options']['attributes'] = array(
     '#type' => 'fieldset',
     '#title' => t('Menu item attributes'),
@@ -175,6 +192,7 @@ function _menu_attributes_form_alter(array &$form, array $item = array(), array 
       '#access' => $info['enabled'],
     );
   }
+
   // Add form values for the reset of $item['options'] and
   // $item['options']['attributes'] so the values will carry over during save.
   foreach ($item['options'] as $key => $value) {
@@ -232,12 +250,19 @@ function _menu_attributes_form_submit($form, &$form_state) {
  * @see menu_configure_form()
  */
 function menu_attributes_form_menu_configure_alter(&$form, $form_state) {
+  if (!user_access('administer menu attributes')) {
+    return;
+  }
+
   $form['attributes_title'] = array(
     '#type' => 'item',
     '#title' => t('Menu item attribute options'),
   );
   $form['attributes_vertical_tabs'] = array(
     '#type' => 'vertical_tabs',
+    '#attached' => array(
+      'js' => array(drupal_get_path('module', 'menu_attributes') . '/menu_attributes.js'),
+    ),
   );
 
   $attributes = menu_attributes_get_menu_attribute_info();
