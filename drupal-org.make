@@ -138,6 +138,5 @@ projects[webform][subdir] = "contrib"
 ; Themes
 ; --------
 
-projects[omega][version] = "3.0"
 projects[omega][type] = "theme"
 projects[omega][subdir] = "contrib"
