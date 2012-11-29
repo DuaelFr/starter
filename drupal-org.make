@@ -84,6 +84,8 @@ libraries[ckeditor][destination] = "libraries"
 ; SEO & Security 
 
 projects[google_analytics][subdir] = "contrib"
+;projects[menutree][subdir] = "contrib"
+;projects[menutree][version] = "1.x-dev"
 projects[metatag][subdir] = "contrib"
 projects[pathauto][subdir] = "contrib"
 projects[redirect][subdir] = "contrib"
