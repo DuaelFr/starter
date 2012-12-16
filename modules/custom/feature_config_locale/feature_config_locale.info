@@ -1,0 +1,13 @@
+name = Feature Config Locale
+description = Enable and set default language French, disable English.
+core = 7.x
+package = App
+version = 7.x-1.0-alpha1
+project = feature_config_locale
+dependencies[] = features
+dependencies[] = l10n_update
+dependencies[] = locale
+features[features_api][] = api:1
+features[language][] = en
+features[language][] = fr
+project path = profiles/visustock/modules/custom
