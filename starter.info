@@ -21,6 +21,7 @@ dependencies[] = role_delegation
 dependencies[] = role_export
 dependencies[] = strongarm
 dependencies[] = taxonomy
+dependencies[] = taxonomy_access_fix
 dependencies[] = transliteration
 dependencies[] = token
 dependencies[] = views
@@ -34,6 +35,7 @@ dependencies[] = webform
 ; Development
 dependencies[] = bean_admin_ui
 dependencies[] = context_ui
+dependencies[] = contextual
 dependencies[] = devel
 dependencies[] = diff
 dependencies[] = field_ui
