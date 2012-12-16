@@ -40,6 +40,7 @@ dependencies[] = devel
 dependencies[] = diff
 dependencies[] = field_ui
 dependencies[] = module_filter
+dependencies[] = omega_tools
 dependencies[] = options_element
 ;dependencies[] = rules_admin
 dependencies[] = views_ui

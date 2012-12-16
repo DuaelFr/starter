@@ -12,30 +12,42 @@
  * @see system_install()
  */
 function starter_install() {
-  // Aucun bloc activé par défaut sauf le contenu
-  $default_theme = variable_get('theme_default', 'bartik');
-  $values = array(
-    array(
-      'module' => 'system',
-      'delta' => 'main',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'content',
-      'pages' => '',
-      'cache' => -1,
-    ),
-  );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
-  foreach ($values as $record) {
-    $query->values($record);
-  }
-  $query->execute();
+  // Use the same name as the profile for the default theme.
+  $theme_name = basename(__DIR__);
 
-  // Creation de compte uniquement par les admins
+  // Use omega_tools to create the subtheme if it does not exists.
+  if (!is_dir(__DIR__ . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'custom' . DIRECTORY_SEPARATOR . $theme_name)) {
+    $subtheme = new stdClass();
+    $subtheme->new = TRUE;
+    $subtheme->name = ucfirst($theme_name);
+    $subtheme->machine_name = $theme_name;
+    $subtheme->starterkit = 'starterkit_omega_html5';
+    $subtheme->path = __DIR__ . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'custom' . DIRECTORY_SEPARATOR . $subtheme->machine_name;
+    $subtheme->base = 'omega';
+    $subtheme->default = FALSE;
+    $subtheme->status = TRUE;
+
+    module_load_include('module', 'omega_tools');
+    omega_tools_subtheme_create($subtheme);
+    omega_tools_subtheme_process($subtheme);
+  }
+
+  // Set default theme.
+  theme_enable(array($theme_name));
+  theme_disable(array('bartik', 'garland', 'seven', 'stark'));
+  variable_set('theme_default', $theme_name);
+  variable_set('admin_theme', 'rubik');
+  variable_set('node_admin_theme', TRUE);
+
+  // Disable all blocks by default. Use context to enable them.
+  db_update('block')
+    ->fields(array('region' => -1))
+    ->execute();
+
+  // Only allow administrators to create accounts.
   variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
 
-  // Accès au contenu publié pour tout le monde par défaut
+  // Give access to the published content to everyone.
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));
 }
