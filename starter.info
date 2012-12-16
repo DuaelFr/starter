@@ -31,6 +31,7 @@ dependencies[] = webform
 ; Add your Features or custom modules here. They should include dependencies.
 ; ie. wysiwyg + imce + linkit
 ; ie. redirect + metatag + google_analytics + xml_sitemap
+dependencies[] = feature_config_base
 
 ; Development
 dependencies[] = bean_admin_ui
