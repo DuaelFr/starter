@@ -32,6 +32,7 @@ dependencies[] = webform
 ; ie. wysiwyg + imce + linkit
 ; ie. redirect + metatag + google_analytics + xml_sitemap
 dependencies[] = feature_config_base
+dependencies[] = feature_config_editors
 dependencies[] = feature_config_locale
 
 ; Development
