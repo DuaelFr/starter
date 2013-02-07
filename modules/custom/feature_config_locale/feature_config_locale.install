@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Feature config locale install file.
+ */
+
+ /**
+  * Implements hook_install().
+  */
+function feature_config_locale_install() {
+  $langs = language_list();
+  if (isset($langs['fr'])) {
+    variable_set('language_default', (object) $langs['fr']);
+  }
+}
+
+/**
+ * Execute the install script to define the default language.
+ */
+function feature_config_locale_update_7001(&$sandbox) {
+  feature_config_locale_install();
+}
