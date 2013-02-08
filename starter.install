@@ -39,9 +39,14 @@ function starter_install() {
   variable_set('admin_theme', 'rubik');
   variable_set('node_admin_theme', TRUE);
 
-  // Disable all blocks by default. Use context to enable them.
+  // Disable all blocks by default except system-main. Use context to enable them.
   db_update('block')
     ->fields(array('region' => -1))
+    ->condition(
+      db_or()
+        ->condition('delta', 'main', '!=')
+        ->condition('module', 'system', '!=')
+    )
     ->execute();
 
   // Only allow administrators to create accounts.
