@@ -1,6 +1,6 @@
 api = "2"
 core = "7.x"
- 
+
 ; Modules
 ; --------
 
@@ -102,7 +102,7 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
-; SEO & Security 
+; SEO & Security
 
 projects[google_analytics][subdir] = "contrib"
 ;projects[menutree][subdir] = "contrib"
@@ -174,7 +174,7 @@ projects[views][subdir] = "contrib"
 projects[webform][subdir] = "contrib"
 ;projects[webform_validation][subdir] = "contrib"
 
-; Utils 
+; Utils
 
 ;projects[colorbox][subdir] = "contrib"
 ;libraries[colorbox][download][type] = "get"
@@ -212,3 +212,9 @@ projects[rubik][type] = "theme"
 projects[rubik][subdir] = "contrib"
 projects[tao][type] = "theme"
 projects[tao][subdir] = "contrib"
+
+
+; Patches
+; --------
+
+projects[taxonomy_access_fix][patch][] = "http://drupal.org/files/taf-use-machine-name-with-core-patch-1637446-6.patch"
