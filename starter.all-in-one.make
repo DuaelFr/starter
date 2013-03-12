@@ -185,7 +185,7 @@ projects[tao][subdir] = "contrib"
 ; --------
 
 ; Fix states enabled/disabled/checked on radios, checkboxes and select boxes.
-project[drupal][patch][] = "http://drupal.org/files/drupal-7.x-fix_states_disabled_checked-994360-30-do-not-test.patch"
+project[drupal][patch][] = "http://drupal.org/files/drupal-7.x-fix_states_disabled_checked-994360-31-do-not-test.patch"
 ; Fix PDOException when trying to add permissions on disabled modules (issue with Features).
 project[drupal][patch}[] = "http://drupal.org/files/drupal-7.x-fix_pdoexception_grant_permissions-737816-26-do-not-test.patch"
 ; Add a drupal_array_insert function to ease views alteration.
