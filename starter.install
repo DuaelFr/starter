@@ -96,6 +96,10 @@ function _starter_install_theme() {
  */
 function _starter_install_locale(&$install_state) {
   $settings = _starter_get_settings();
+  // If the default language is english we have nothing to do here.
+  if ($settings['default_language'] == 'en') {
+    return;
+  }
 
   // Add french language if needed.
   include_once DRUPAL_ROOT . '/includes/locale.inc';
