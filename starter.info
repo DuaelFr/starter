@@ -3,6 +3,16 @@ description = Profil d'installation pour démarrer un projet rapidement
 version = 7.x-1.0
 core = 7.x
 
+; Settings (see profile's hook_install_tasks)
+settings[default_country] = "FR"
+settings[default_language] = "fr"
+settings[default_theme] = "starter_theme"
+settings[default_timezone] = "Europe/Paris"
+settings[site_mail] = "admin@example.com"
+settings[site_name] = "Starter Site"
+settings[site_slogan] = "Start your project faster"
+settings[user1_name] = "webmaster"
+
 ; Core dependencies
 dependencies[] = block
 dependencies[] = field
