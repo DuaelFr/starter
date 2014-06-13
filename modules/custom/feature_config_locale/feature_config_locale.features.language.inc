@@ -15,26 +15,26 @@ function feature_config_locale_locale_default_languages() {
     'language' => 'en',
     'name' => 'English',
     'native' => 'English',
-    'direction' => '0',
-    'enabled' => '0',
-    'plurals' => '0',
+    'direction' => 0,
+    'enabled' => 0,
+    'plurals' => 0,
     'formula' => '',
     'domain' => '',
     'prefix' => 'en',
-    'weight' => '-9',
+    'weight' => -9,
   );
   // Exported language: fr.
   $languages['fr'] = array(
     'language' => 'fr',
     'name' => 'French',
     'native' => 'Français',
-    'direction' => '0',
-    'enabled' => '1',
-    'plurals' => '2',
+    'direction' => 0,
+    'enabled' => 0,
+    'plurals' => 2,
     'formula' => '($n>1)',
     'domain' => '',
     'prefix' => 'fr',
-    'weight' => '-10',
+    'weight' => 0,
   );
   return $languages;
 }

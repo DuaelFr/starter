@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Feature Config Locale feature.
  */
+
+include_once 'feature_config_locale.features.inc';
