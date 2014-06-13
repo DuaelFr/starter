@@ -1,50 +1,30 @@
 name = Starter
 description = Profil d'installation pour démarrer un projet rapidement
-version = 7.x-0.1
+version = 7.x-1.0
 core = 7.x
 
-; Required
-dependencies[] = admin_menu_toolbar
-dependencies[] = bean
+; Core dependencies
 dependencies[] = block
-dependencies[] = context
-dependencies[] = dblog
-dependencies[] = features
-dependencies[] = field_group
-dependencies[] = jquery_update
-dependencies[] = l10n_update
+dependencies[] = field
+dependencies[] = file
+dependencies[] = filter
+dependencies[] = image
 dependencies[] = locale
 dependencies[] = menu
-dependencies[] = menu_admin_per_menu
-dependencies[] = pathauto
-dependencies[] = role_delegation
-dependencies[] = role_export
-dependencies[] = strongarm
-dependencies[] = taxonomy
-dependencies[] = taxonomy_access_fix
-dependencies[] = transliteration
-dependencies[] = token
-dependencies[] = views
-dependencies[] = webform
+dependencies[] = node
+dependencies[] = path
+dependencies[] = system
+dependencies[] = user
 
-; Features / Custom modules
-; Add your Features or custom modules here. They should include dependencies.
-; ie. wysiwyg + imce + linkit
-; ie. redirect + metatag + google_analytics + xml_sitemap
+; Contrib dependencies
+dependencies[] = adminimal_admin_menu
+
+; Project dependencies
 dependencies[] = feature_config_base
 dependencies[] = feature_config_editors
 dependencies[] = feature_config_locale
+dependencies[] = feature_config_mails
 dependencies[] = feature_context_base
 
 ; Development
-dependencies[] = bean_admin_ui
-dependencies[] = context_ui
-dependencies[] = contextual
-dependencies[] = devel
-dependencies[] = diff
-dependencies[] = field_ui
-dependencies[] = module_filter
-dependencies[] = omega_tools
-dependencies[] = options_element
-;dependencies[] = rules_admin
-dependencies[] = views_ui
+dependencies[] = feature_dev
