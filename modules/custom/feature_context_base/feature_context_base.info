@@ -11,4 +11,3 @@ features[context][] = front
 features[context][] = not-front
 features[ctools][] = context:context:3
 features[features_api][] = api:1
-project path = profiles/visustock/modules/custom
