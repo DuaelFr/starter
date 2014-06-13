@@ -172,26 +172,17 @@ projects[crumbs][version] = "1.x-dev"
 
 projects[omega][type] = "theme"
 projects[omega][subdir] = "contrib"
-projects[omega_tools][subdir] = "contrib"
-
-projects[rubik][type] = "theme"
-projects[rubik][subdir] = "contrib"
-
-projects[tao][type] = "theme"
-projects[tao][subdir] = "contrib"
+projects[adminimal][type] = "theme"
+projects[adminimal][subdir] = "contrib"
+projects[adminimal_admin_menu][subdir] = "contrib"
 
 
 ; Patches
 ; --------
 
 ; Fix states enabled/disabled/checked on radios, checkboxes and select boxes.
-project[drupal][patch][] = "http://drupal.org/files/drupal-7.x-fix_states_disabled_checked-994360-31-do-not-test.patch"
+project[drupal][patch][] = "https://drupal.org/files/drupal-7.x-fix_states_disabled_checked-994360-31-do-not-test.patch"
 ; Fix PDOException when trying to add permissions on disabled modules (issue with Features).
-project[drupal][patch}[] = "http://drupal.org/files/drupal-7.x-fix_pdoexception_grant_permissions-737816-26-do-not-test.patch"
+project[drupal][patch][] = "https://drupal.org/files/drupal-fix_pdoexception_grant_permissions-737816-36-do-not-test.patch"
 ; Add a drupal_array_insert function to ease views alteration.
-project[drupal][patch}[] = "http://drupal.org/files/drupal_array_insert-7.15-do-not-test.patch"
-; Use vocabulary machine names form permissions instead of vids.
-project[drupal][patch}[] = "http://drupal.org/files/995156-31_portable_taxonomy_permissions-D7-15.patch"
-
-; Use machine names in new permissions
-projects[taxonomy_access_fix][patch][] = "http://drupal.org/files/taf-use-machine-name-with-core-patch-1637446-6.patch"
+project[drupal][patch][] = "http://drupal.org/files/drupal_array_insert-7.15-do-not-test.patch"

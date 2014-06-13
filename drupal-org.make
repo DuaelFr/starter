@@ -208,13 +208,10 @@ projects[crumbs][download][branch] = "7.x-1.x"
 
 projects[omega][type] = "theme"
 projects[omega][subdir] = "contrib"
-projects[rubik][type] = "theme"
-projects[rubik][subdir] = "contrib"
-projects[tao][type] = "theme"
-projects[tao][subdir] = "contrib"
+projects[adminimal][type] = "theme"
+projects[adminimal][subdir] = "contrib"
+projects[adminimal_admin_menu][subdir] = "contrib"
 
 
 ; Patches
 ; --------
-
-projects[taxonomy_access_fix][patch][] = "http://drupal.org/files/taf-use-machine-name-with-core-patch-1637446-6.patch"
