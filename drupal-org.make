@@ -6,8 +6,12 @@ core = "7.x"
 
 ; Development
 
+projects[checklistapi][subdir] = "contrib"
 projects[devel][subdir] = "contrib"
 projects[diff][subdir] = "contrib"
+;projects[pasc][subdir] = "contrib"
+projects[qa_checklist][subdir] = "contrib"
+;projects[seo_checklist][subdir] = "contrib"
 
 ; API modules
 
