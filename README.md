@@ -2,6 +2,11 @@
 
 This profile purpose is to help developpers to quickly start a new project.
 
+## Dependencies
+
+* Features & Strongarm : but you might need them anyway
+* Omega 4.x : only if you want to use the included starter_theme
+
 ## Usage
 
 1. Download the profile in your profiles directory.
