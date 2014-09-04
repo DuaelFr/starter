@@ -15,6 +15,7 @@ settings[site_slogan] = "Start your project faster"
 settings[user1_name] = "webmaster"
 
 ; Core dependencies
+; Might be reported into features and removed from the profile.
 dependencies[] = block
 dependencies[] = field
 dependencies[] = file
