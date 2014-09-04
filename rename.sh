@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Prepare needed commands
+MV=`which mv`
+RENAME=`which rename`
+SED=`which sed`
+FIND=`which find`
+
 # Save current directory
 CURRENTDIR=`pwd`
 
@@ -23,17 +29,17 @@ fi
 cd $DIR
 
 # Rename all profile files
-RENAME=`which rename`
 $RENAME s/starter\./$NEWNAME./ *
 
 # Rename functions in profile files
-SED=`which sed`
-$SED s/starter/$NEWNAME/ -i *.install
-$SED s/starter/$NEWNAME/ -i *.profile
+$SED s/starter/$NEWNAME/g -i *.install
+$SED s/starter/$NEWNAME/g -i *.profile
+
+# Rename the given theme, its files and reference to its files.
+$MV themes/custom/starter_theme themes/custom/${NEWNAME}_theme
+$FIND themes/custom/${NEWNAME}_theme -name "*starter*" -exec $RENAME s/starter/$NEWNAME/ {} \;
+$FIND themes/custom/${NEWNAME}_theme -type f -exec $SED s/starter/$NEWNAME/g -i {} \;
 
 # Rename profile directory
 cd ..
 mv starter $NEWNAME
-
-# Get back to the current directory
-cd $CURRENTDIR
