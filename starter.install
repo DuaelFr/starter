@@ -129,6 +129,11 @@ function _starter_install_locale(&$install_state) {
   // Reset languages static cache to avoid issues with l10n_update.
   drupal_static_reset('language_list');
 
+  // Stop the script here if we don't want or don't need to import translations.
+  if ($settings['default_language'] == 'en' || empty($settings['import_translations'])) {
+    return;
+  }
+
   // Download french translations by using the l10n_update module batch.
   module_enable(array('l10n_update'));
   module_load_include('inc', 'l10n_update', 'l10n_update.check');
