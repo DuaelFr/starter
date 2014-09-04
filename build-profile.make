@@ -170,8 +170,8 @@ projects[crumbs][subdir] = "contrib"
 
 projects[omega][type] = "theme"
 projects[omega][subdir] = "contrib"
-projects[adminimal][type] = "theme"
-projects[adminimal][subdir] = "contrib"
+projects[adminimal_theme][type] = "theme"
+projects[adminimal_theme][subdir] = "contrib"
 projects[adminimal_admin_menu][subdir] = "contrib"
 
 
