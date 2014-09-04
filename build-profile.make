@@ -14,6 +14,7 @@ projects[drupal][type] = "core"
 ; Development
 
 projects[checklistapi][subdir] = "contrib"
+projects[coffee][subdir] = "contrib"
 projects[devel][subdir] = "contrib"
 projects[diff][subdir] = "contrib"
 ;projects[pasc][subdir] = "contrib"
@@ -54,6 +55,7 @@ projects[entitycache][version] = "1.x-dev"
 
 projects[admin_menu][subdir] = "contrib"
 ;projects[admin_views][subdir] = "contrib"
+;projects[filter_perms][subdir] = "contrib"
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "2.x-dev"
 projects[options_element][subdir] = "contrib"
