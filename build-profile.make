@@ -126,6 +126,7 @@ projects[l10n_update][version] = "2.x-dev"
 ;projects[imagecache_actions][version] = "1.x-dev"
 ;projects[smartcrop][subdir] = "contrib"
 ;projects[smartcrop][version] = "1.x-dev"
+;projects[focal_point][subdir] = "contrib"
 
 ; Views
 
