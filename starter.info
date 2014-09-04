@@ -34,6 +34,7 @@ dependencies[] = adminimal_admin_menu
 dependencies[] = feature_config_base
 dependencies[] = feature_config_editors
 dependencies[] = feature_config_locale
+dependencies[] = feature_config_seo
 dependencies[] = feature_context_base
 
 ; Development
