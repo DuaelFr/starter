@@ -19,12 +19,12 @@ project[drupal][patch][] = "http://drupal.org/files/drupal_array_insert-7.15-do-
 
 ; Development
 
-projects[checklistapi][subdir] = "contrib"
+;projects[checklistapi][subdir] = "contrib"
 projects[coffee][subdir] = "contrib"
 projects[devel][subdir] = "contrib"
 projects[diff][subdir] = "contrib"
 ;projects[pasc][subdir] = "contrib"
-projects[qa_checklist][subdir] = "contrib"
+;projects[qa_checklist][subdir] = "contrib"
 ;projects[seo_checklist][subdir] = "contrib"
 
 ; API modules
@@ -49,7 +49,7 @@ projects[strongarm][subdir] = "contrib"
 
 ; Performance
 
-projects[apc][subdir] = "contrib"
+;projects[apc][subdir] = "contrib"
 ;projects[cdn][subdir] = "contrib"
 ;projects[cdn][version] = "2.x-dev"
 projects[entitycache][subdir] = "contrib"
@@ -80,11 +80,11 @@ projects[linkit][subdir] = "contrib"
 projects[linkit][version] = "2.x-dev"
 ;projects[references_dialog][subdir] = "contrib"
 ;projects[term_reference_tree][subdir] = "contrib"
-;projects[textformatter][subdir] = "contrib"
+projects[textformatter][subdir] = "contrib"
 
 ; Publication & input filters
 
-;projects[better_formats][subdir] = "contrib"
+projects[better_formats][subdir] = "contrib"
 projects[imce][subdir] = "contrib"
 projects[imce_mkdir][subdir] = "contrib"
 projects[imce_wysiwyg][subdir] = "contrib"
@@ -132,7 +132,7 @@ projects[l10n_update][version] = "2.x-dev"
 ;projects[imagecache_actions][version] = "1.x-dev"
 ;projects[smartcrop][subdir] = "contrib"
 ;projects[smartcrop][version] = "1.x-dev"
-;projects[focal_point][subdir] = "contrib"
+projects[focal_point][subdir] = "contrib"
 
 ; Views
 
@@ -147,7 +147,7 @@ projects[views][subdir] = "contrib"
 
 ; Webforms
 
-projects[webform][subdir] = "contrib"
+;projects[webform][subdir] = "contrib"
 ;projects[webform_validation][subdir] = "contrib"
 
 ; Utils
