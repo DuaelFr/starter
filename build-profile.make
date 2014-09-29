@@ -27,6 +27,16 @@ projects[diff][subdir] = "contrib"
 ;projects[qa_checklist][subdir] = "contrib"
 ;projects[seo_checklist][subdir] = "contrib"
 
+; SECURITY
+
+projects[taxonomy_access_fix][subdir] = "contrib"
+projects[user_settings_access][subdir] = "contrib"
+projects[user_settings_access][version] = "1.x-dev"
+; #2054645 Restrict access to admin/config/people/accounts/fields and admin/config/people/accounts/display
+projects[user_settings_access][patch][] = https://www.drupal.org/files/user_settings_access-restrict_account_fields_and_display-2054645-18.patch
+; #2054679 Hide the "Manage display" DS tab
+projects[user_settings_access][patch][] = https://www.drupal.org/files/user_settings_access-restrict_ds_manage_display_tab-2054679-12.patch
+
 ; API modules
 
 ;projects[advanced_help][subdir] = "contrib"
@@ -114,7 +124,6 @@ projects[xmlsitemap][subdir] = "contrib"
 projects[menu_admin_per_menu][subdir] = "contrib"
 projects[role_delegation][subdir] = "contrib"
 projects[role_export][subdir] = "contrib"
-projects[taxonomy_access_fix][subdir] = "contrib"
 ;projects[workbench][subdir] = "contrib"
 ;projects[workbench_email][subdir] = "contrib"
 ;projects[workbench_moderation][subdir] = "contrib"
