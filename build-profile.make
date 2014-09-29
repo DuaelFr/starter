@@ -80,6 +80,8 @@ projects[email][subdir] = "contrib"
 projects[entityreference][subdir] = "contrib"
 projects[field_collection][subdir] = "contrib"
 projects[field_collection][version] = "1.x-dev"
+; #2000690 Deleting revisions via node_revision_delete wrongly deletes entire field collection
+projects[field_collection][patch][] = https://www.drupal.org/files/issues/field_collection-supporting_revision_deletions-2000690-60.patch
 projects[field_group][subdir] = "contrib"
 projects[filefield_sources][subdir] = "contrib"
 projects[files_undo_remove][subdir] = "contrib"
