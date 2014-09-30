@@ -97,6 +97,7 @@ libraries[ckeditor][destination] = "libraries"
 
 ; SEO & Security
 
+projects[globalredirect][subdir] = "contrib"
 projects[google_analytics][subdir] = "contrib"
 ;projects[menutree][subdir] = "contrib"
 ;projects[menutree][version] = "1.x-dev"
@@ -159,6 +160,7 @@ projects[views][subdir] = "contrib"
 projects[crumbs][subdir] = "contrib"
 ;projects[ds][subdir] = "contrib"
 ;projects[htmlmail][subdir] = "contrib"
+projects[insert][subdir] = "contrib"
 ;projects[menu_attributes][subdir] = "contrib"
 ;projects[nodequeue][subdir] = "contrib"
 ;projects[nodequeue][version] = "2.x-dev"
