@@ -20,7 +20,7 @@ $DRUSH make repository/project-core.make $BUILDDIR
 $DRUSH make repository/project.make --no-core $BUILDDIR
 
 # Add shared symlinks
-for f in `$FIND shared -mindepth 1 ! -name 'README.txt' ! -name 'private'`
+for f in `$FIND shared -mindepth 1 -maxdepth 1 ! -name 'README.txt' ! -name 'private'`
 do
   $LN -s ../../../../$f $BUILDDIR/sites/default/$($BASENAME $f)
 done
