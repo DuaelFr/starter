@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Dev feature.
+ */
+
+include_once 'feature_dev.features.inc';
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * Debug outgoing emails.
+ */
+function feature_dev_mail_alter(&$message) {
+  if (variable_get('feature_dev_debug_mail', FALSE)) {
+    // Replace the recipient and add the original recipient at the end of the
+    // message.
+    $newto = variable_get('feature_dev_debug_mail_to', '');
+    if (!empty($newto)) {
+      $message['body'][] = 'DEBUG To: ' . $message['to'];
+      $message['old_to'] = $message['to'];
+      $message['to'] = $newto;
+    }
+
+    // Replace the sender.
+    $newfrom = variable_get('feature_dev_debug_mail_from', '');
+    if (!empty($newfrom)) {
+      $message['from'] = $newfrom;
+      $message['headers']['From'] = $newfrom;
+      $message['headers']['Sender'] = $newfrom;
+      $message['headers']['Return-Path'] = $newfrom;
+    }
+
+    // Suspend the sending if asked.
+    $message['send'] = variable_get('feature_dev_debug_mail_send', TRUE);
+
+    // Show the message content in the interface.
+    if (!drupal_is_cli() && module_exists('devel')) {
+      dpm($message);
+    }
+  }
+}
