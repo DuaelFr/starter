@@ -29,6 +29,12 @@ done
 PROFILENAME=`$BASENAME $($LS repository/*.profile) | $SED -e 's/\.profile//'`
 $LN -s ../../../repository $BUILDDIR/profiles/$PROFILENAME
 
+# Symlink drush config if it exists
+if [ -d repository/drush ]
+then
+  $LN -s ../../../../repository/drush $BUILDDIR/sites/all/drush
+fi
+
 # Change www symlink
 if [ -h www ]
 then
