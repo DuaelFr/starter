@@ -1,0 +1,4 @@
+name = Starter
+description = Profile to help Drupal developpers to start their projects quickier
+version = 7.x-2.0
+core = 7.x
