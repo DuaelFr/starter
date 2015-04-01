@@ -96,25 +96,32 @@ function _starter_install_theme() {
  */
 function _starter_install_locale(&$install_state) {
   $settings = _starter_get_settings();
-  // If the default language is english we have nothing to do here.
-  if ($settings['default_language'] == 'en') {
+
+  $to_enable = $settings['languages'];
+  $to_enable[] = $settings['default_language'];
+  $to_enable = array_unique($to_enable);
+
+  // Stop here if there is no language to enable (only english needed).
+  if (count($to_enable) == 1 && current($to_enable) == 'en') {
     return;
   }
 
-  // Add french language if needed.
+  // Add languages to enable.
   include_once DRUPAL_ROOT . '/includes/locale.inc';
   $langs = language_list();
-  if (empty($langs[$settings['default_language']])) {
-    locale_add_language($settings['default_language']);
+  foreach ($to_enable as $lang) {
+    if (empty($langs[$lang])) {
+      locale_add_language($lang);
+    }
     $langs = language_list();
   }
 
-  // Enable french language and set it as default.
+  // Enable languages and set it as default.
   db_update('languages')
     ->fields(array(
       'enabled' => '1',
     ))
-    ->condition('language', $settings['default_language'])
+    ->condition('language', $to_enable, 'IN')
     ->execute();
   variable_set('language_default', (object) $langs[$settings['default_language']]);
 
@@ -123,21 +130,25 @@ function _starter_install_locale(&$install_state) {
     ->fields(array(
       'enabled' => '0',
     ))
-    ->condition('language', $settings['default_language'], '<>')
+    ->condition('language', $to_enable, 'NOT IN')
     ->execute();
 
   // Reset languages static cache to avoid issues with l10n_update.
   drupal_static_reset('language_list');
 
-  // Stop the script here if we don't want or don't need to import translations.
-  if ($settings['default_language'] == 'en' || empty($settings['import_translations'])) {
+  // Import local translations.
+  $modules = module_list();
+  starter_modules_enabled($modules);
+
+  // Stop the script here if we don't want to download translations.
+  if (empty($settings['download_translations'])) {
     return;
   }
 
-  // Download french translations by using the l10n_update module batch.
+  // Download translations by using the l10n_update module batch.
   module_enable(array('l10n_update'));
   module_load_include('inc', 'l10n_update', 'l10n_update.check');
-  l10n_update_language_refresh(array($settings['default_language']));
+  l10n_update_language_refresh($to_enable);
   $batch = batch_get();
   // Disable l10n_update at the end of the process for performance reasons.
   $batch['operations'][] = array('module_disable', array(array('l10n_update')));

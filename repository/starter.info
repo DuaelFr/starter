@@ -5,8 +5,10 @@ core = 7.x
 
 ; Settings (see profile's hook_install_tasks)
 settings[default_country] = "FR"
+;settings[languages][] = "en"
+settings[languages][] = "fr"
 settings[default_language] = "fr"
-settings[import_translations] = 1
+settings[download_translations] = 1
 settings[default_theme] = "starter_theme"
 settings[default_timezone] = "Europe/Paris"
 settings[site_mail] = "admin@example.com"
